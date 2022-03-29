@@ -1,0 +1,62 @@
+html 
+    body 
+        form(id='form1' action='/adding_data' method= 'post')
+            input#id(type='hidden', name='id', value='')
+            table
+                tr
+                td(style='text-align: center')
+                    label Username &nbsp;&nbsp;
+                    input#name(type='text', name='name', placeholder='Name', value='')
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    br
+                    br
+                    label DOB &nbsp;&nbsp;
+                    input#dob(type='date', name='dob', placeholder='DOB', value='')
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    br
+                    br
+                    label Loves &nbsp;&nbsp;
+                    input#loves(type='text', name='loves', placeholder='Loves', value='')
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    br
+                    br
+                    label Weight &nbsp;&nbsp;
+                    input#weight(type='text', name='weight', placeholder='weight', value='')
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    br
+                    br
+                    label Gender &nbsp;&nbsp;
+                    input#gender(type='text', name='gender', placeholder='gender', value='')
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    br
+                    br
+                    label Vampires &nbsp;&nbsp;
+                    input#vampires(type='text', name='vampires', placeholder='vampires', value='')
+                    | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    br
+                    br
+                    input#subbtn(type='submit', name='sub', value='Add Data')
+            table(border = 2)
+                tbody
+                    tr
+                        th ID
+                        th Name
+                        th DOB
+                        th Loves
+                        th Weight
+                        th gender
+                        th vampires
+                    if unicorns.length
+                        each item,index in unicorns
+                            tr
+                                td #{item._id}
+                                td #{item.name}
+                                td #{item.dob}
+                                td #{item.loves}
+                                td #{item.weight}
+                                td #{item.gender}
+                                td #{item.vampires}
+                                td
+                                    a.editlink(href=`/edit/${item._id}`) Edit
+                                    | &nbsp;&nbsp;
+                                    a(href=`/delete?id=${item._id}`, onclick='return confirm("You are going to delete this record. Continue?")') Delete
